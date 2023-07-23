@@ -14,6 +14,10 @@ function init(){
 function initHandler(){
     $("#getTable").on("click",onGetTableClick);
     $("#printAllCards").on("click",onPrintAllCardsClick);
+    $("#putCard").on("click",onPutCardClick);
+    $("#reInit").on("click",onreInitClick);
+
+
 
 }
 
@@ -37,4 +41,35 @@ function onPrintAllCardsClick(){
         cardTemplate.html(x);
         $("#allCardsBox").append(cardTemplate);
     }
+}
+
+
+
+
+function onPutCardClick(){
+    let reqData=
+        {
+            player: $("#player").val(),
+            slot:$("#slot").val(),
+            target:$("#target").val()
+        };
+    let reqDataStr=JSON.stringify(reqData);
+    $.get( servletURL+"putCard", {data: reqDataStr},function( data ) {
+
+    }).done(function(data) {
+        $( "#getTableResult" ).html( JSON.stringify(data,null,3) );
+    }).fail(function(e) {
+        alert( "error in Ajax Request"+e );
+    });
+}
+
+function onreInitClick(){
+    $.get( servletURL+"init",function( data ) {
+
+    }).done(function(data) {
+        //$( "#getTableResult" ).html( JSON.stringify(data,null,3) );
+        alert("Table was resetted");
+    }).fail(function(e) {
+        alert( "error in Ajax Request"+e );
+    });
 }

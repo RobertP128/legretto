@@ -14,6 +14,16 @@ public class Application {
             fillSinglePlayer(numPlayer);
         }
 
+        for(int x=0;x<table.targets.length;x++){
+            for(int y=0;y<table.targets[x].length;y++){
+                table.targets[x][y]=-1;
+            }
+        }
+
+        table.players[0].slots[0]=0;
+        table.players[0].slots[1]=1;
+        table.players[1].slots[2]=2;
+        table.players[2].slots[3]=3;
 
     }
 
@@ -54,6 +64,57 @@ public class Application {
             }
             pos++;
         }
+
+    }
+
+    public int getCardValueFromCardInt(int card){
+        return (card % 10) +1;
+    }
+    public int getCardColorFromCardInt(int card){
+        return (card / 10);
+    }
+
+    public boolean ValidatePutCardCommand(PutCardCommand cmd){
+        if (cmd.player<0 || cmd.player>=table.players.length) return false;
+        if (cmd.slot<0 || cmd.slot>3) return false;
+        if (cmd.target<0 || cmd.target>15) return false;
+
+        var player=table.players[cmd.player];
+        // No Card in this slot
+        if (player.slots[cmd.slot]<0) return false;
+
+        int srcCard=player.slots[cmd.slot];
+
+        // check if the target is valid for this card
+        if (table.targetsPointer[cmd.target]>=0){
+            int currentTargetCard=table.targets[cmd.target][table.targetsPointer[cmd.target]];
+            // Existing card must be one lower than the srcCard which wants to be put on top here
+            if (getCardValueFromCardInt(currentTargetCard)+1==getCardValueFromCardInt(srcCard)) return true;
+        }
+        else {
+            // First card in deck
+            if (getCardValueFromCardInt(srcCard)==1) return true;
+        }
+
+        return false;
+
+    }
+
+    public boolean putCard(PutCardCommand cmd){
+        if (ValidatePutCardCommand(cmd)){
+            var player=table.players[cmd.player];
+            int srcCard=player.slots[cmd.slot];
+            player.slots[cmd.slot]=-1;
+
+            if (table.targetsPointer[cmd.target]<0){
+                table.targetsPointer[cmd.target]=-1;
+            }
+            table.targetsPointer[cmd.target]++;
+                // First card in deck
+            table.targets[cmd.target][table.targetsPointer[cmd.target]]=srcCard;
+            return true;
+        }
+        return false;
     }
 
 }

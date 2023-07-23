@@ -1,12 +1,14 @@
 package net.poppinger.legretto.server;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.*;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class HelloServlet extends HttpServlet {
+public class TableController extends HttpServlet {
     private String message;
     private Application application;
     private APIController apiController;
@@ -34,6 +36,23 @@ public class HelloServlet extends HttpServlet {
             out.println("\"OK\"");
             return;
         }
+        if (uri.endsWith("putCard")){
+            var command=request.getParameter("data");
+
+            ObjectMapper om=new ObjectMapper();
+            var cmd= om.readValue(command,PutCardCommand.class);
+
+            var success=application.putCard(cmd);
+            response.setContentType("application/json");
+            PrintWriter out = response.getWriter();
+            if (success) {
+                out.println(apiController.GetTableJSON(application.table));
+            }
+            else {
+                response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            }
+            return;
+        }
 
 
         response.setContentType("text/html");
@@ -44,6 +63,11 @@ public class HelloServlet extends HttpServlet {
         out.println("<h1>" + message + "</h1>");
         out.println("</body></html>");
     }
+
+
+
+
+
 
     public void destroy() {
     }

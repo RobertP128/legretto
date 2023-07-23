@@ -11,8 +11,22 @@
 <pre id="getTableResult">zzzz</pre>
 <h1><%= "Legretto" %></h1>
 <br/>
+<button id="reInit">ReInit</button>
 <button id="printAllCards">Print All Cards</button>
 <button id="getTable">Get Table</button>
+<button id="putCard">putCard</button>
+<div>
+  Player:
+  <input id="player" type="text" value="0">
+</div>
+<div>
+  Slot:
+<input id="slot" type="text" value="0">
+</div>
+<div>
+  Target:
+<input id="target" type="text" value="0">
+</div>
 <div id="allCardsBox"></div>
 
 

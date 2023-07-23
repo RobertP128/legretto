@@ -6,7 +6,7 @@
 
     <servlet>
         <servlet-name>UserValidation</servlet-name>
-        <servlet-class>net.poppinger.legretto.server.HelloServlet</servlet-class>
+        <servlet-class>net.poppinger.legretto.server.TableController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>UserValidation</servlet-name>
