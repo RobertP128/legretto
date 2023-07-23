@@ -9,7 +9,7 @@
 </head>
 <body>
 <pre id="getTableResult">zzzz</pre>
-<h1><%= "Legretto" %></h1>
+<h1><%= "Legretto2" %></h1>
 <br/>
 <button id="reInit">ReInit</button>
 <button id="printAllCards">Print All Cards</button>

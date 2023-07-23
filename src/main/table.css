@@ -1,0 +1,296 @@
+html{
+    background-color: forestgreen;
+}
+
+.flex-container1 {
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: mediumpurple;
+}
+
+.flex-container2 {
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: rosybrown;
+}
+
+.flex-container3 {
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: darkseagreen;
+}
+
+.flex-container4 {
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: lightpink;
+}
+
+.Card1L {
+    background-color: #f1f1f1;
+    width: 100px;
+    height:200px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+    align-content: center;
+    align-items: stretch;
+}
+
+.Card2L {
+    background-color: #f1f1f1;
+    width: 100px;
+    height:200px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+    align-content: center;
+    align-items: stretch;
+}
+.Card3L {
+    background-color: #f1f1f1;
+    width: 100px;
+    height:200px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+    align-content: center;
+    align-items: stretch;
+}
+.Card4L {
+    background-color: #f1f1f1;
+    width: 100px;
+    height:200px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+    align-content: center;
+    align-items: stretch;
+}
+.CardSL {
+    background-color: #f1f1f1;
+    width: 100px;
+    height:200px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+    align-content: center;
+    align-items: stretch;
+}
+.CardHL {
+    background-color: #f1f1f1;
+    width: 100px;
+    height:200px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+    align-content: center;
+    align-items: stretch;
+}
+.Card1B {
+    background-color: #f1f1f1;
+    width: 100px;
+    height:200px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+    align-content: center;
+    align-items: stretch;
+}
+
+.Card2B {
+    background-color: #f1f1f1;
+    width: 100px;
+    height:200px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+    align-content: center;
+    align-items: stretch;
+}
+.Card3B {
+    background-color: #f1f1f1;
+    width: 100px;
+    height:200px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+    align-content: center;
+    align-items: stretch;
+}
+.Card4B {
+    background-color: #f1f1f1;
+    width: 100px;
+    height:200px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+    align-content: center;
+    align-items: stretch;
+}
+.CardSB {
+    background-color: #f1f1f1;
+    width: 100px;
+    height:200px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+    align-content: center;
+    align-items: stretch;
+}
+.CardHB {
+    background-color: #f1f1f1;
+    width: 100px;
+    height:200px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+    align-content: center;
+    align-items: stretch;
+}
+.Card1G {
+    background-color: #f1f1f1;
+    width: 100px;
+    height:200px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+    align-content: center;
+    align-items: stretch;
+}
+
+.Card2G {
+    background-color: #f1f1f1;
+    width: 100px;
+    height:200px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+    align-content: center;
+    align-items: stretch;
+}
+.Card3G {
+    background-color: #f1f1f1;
+    width: 100px;
+    height:200px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+    align-content: center;
+    align-items: stretch;
+}
+.Card4G {
+    background-color: #f1f1f1;
+    width: 100px;
+    height:200px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+    align-content: center;
+    align-items: stretch;
+}
+.CardSG {
+    background-color: #f1f1f1;
+    width: 100px;
+    height:200px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+    align-content: center;
+    align-items: stretch;
+}
+.CardHG {
+    background-color: #f1f1f1;
+    width: 100px;
+    height:200px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+    align-content: center;
+    align-items: stretch;
+}
+.Card1P {
+    background-color: #f1f1f1;
+    width: 100px;
+    height:200px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+    align-content: center;
+    align-items: stretch;
+}
+
+.Card2P {
+    background-color: #f1f1f1;
+    width: 100px;
+    height:200px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+    align-content: center;
+    align-items: stretch;
+}
+.Card3P {
+    background-color: #f1f1f1;
+    width: 100px;
+    height:200px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+    align-content: center;
+    align-items: stretch;
+}
+.Card4P {
+    background-color: #f1f1f1;
+    width: 100px;
+    height:200px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+    align-content: center;
+    align-items: stretch;
+}
+.CardSP {
+    background-color: #f1f1f1;
+    width: 100px;
+    height:200px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+    align-content: center;
+    align-items: stretch;
+}
+.CardHP {
+    background-color: #f1f1f1;
+    width: 100px;
+    height:200px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+    align-content: center;
+    align-items: stretch;
+}
