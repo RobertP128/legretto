@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JSP - Hello World</title>
+  <script src="js/jquery-3.7.0.min.js"></script>
+  <script src="js/main.js"></script>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/table.css">
+</head>
+<body>
+<div id="debugBox">
+  <button id="closeDebugBox">Close</button>
+  <pre id="getTableResult">zzzz</pre>
+</div>
+<h1>Legretto2</h1>
+<br/>
+<button id="reInit">ReInit</button>
+<button id="printAllCards">Print All Cards</button>
+<button id="getTable">Get Table</button>
+<button id="putCard">putCard</button>
+<div>
+  Player:
+  <input id="player" type="text" value="0">
+</div>
+<div>
+  Slot:
+<input id="slot" type="text" value="0">
+</div>
+<div>
+  Target:
+<input id="target" type="text" value="0">
+</div>
+<div id="allCardsBox"></div>
+
+
+<h1>Karten</h1>
+<script>
+  //comments
+  // H... Handkarten
+  // S... Stapelkarten
+
+  //To-Do
+  // Centrieren das die Karten in der Mitte sind
+  // Centrieren das die Zahlen in der Mitte sind
+  // Legretto zu Ligretto ändern
+  // Hintergrundfarbe lassen oder stadtdessen auf den Karten?
+
+</script>
+
+<div>
+  <div class="row">
+    <div class="flex-container1">
+      <script>
+        //Lila Karten
+      </script>
+      <div class="item Card1L">1</div>
+      <div class="item Card2L">2</div>
+      <div class="item Card3L">3</div>
+      <div class="item Card4L">4</div>
+      <div class="item CardSL">S</div>
+      <div class="item CardHL">H</div>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-2">
+      <div class="flex-container4">
+        <script>
+          //Pinke Karten
+        </script>
+        <div class="item Card1P">1</div>
+        <div class="item Card2P">2</div>
+        <div class="item Card3P">3</div>
+        <div class="item Card4P">4</div>
+        <div class="item CardSP">S</div>
+        <div class="item CardHP">H</div>
+
+      </div>
+
+    </div>
+    <div class="col-8">&nbsp;</div>
+    <div class="col-2">
+      <div class="flex-container2">
+        <script>
+          //Braune Karten
+        </script>
+        <div class="item Card1B">1</div>
+        <div class="item Card2B">2</div>
+        <div class="item Card3B">3</div>
+        <div class="item Card4B">4</div>
+        <div class="item CardSB">S</div>
+        <div class="item CardHB">H</div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="flex-container3">
+      <script>
+        //Grüne Karten
+      </script>
+      <div class="item Card1G">1</div>
+      <div class="item Card2G">2</div>
+      <div class="item Card3G">3</div>
+      <div class="item Card4G">4</div>
+      <div class="item CardSG">S</div>
+      <div class="item CardHG">H</div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- templates-->
+<div id="templates" style="display: none">
+  <div class="card"></div>
+</div>
+</body>
+</html>

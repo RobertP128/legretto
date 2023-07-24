@@ -16,9 +16,14 @@ function initHandler(){
     $("#printAllCards").on("click",onPrintAllCardsClick);
     $("#putCard").on("click",onPutCardClick);
     $("#reInit").on("click",onreInitClick);
+    $("#closeDebugBox").on("click",onCloseDebugBoxClick);
 
 
 
+}
+
+function onCloseDebugBoxClick(){
+    $("#getTableResult").html("--");
 }
 
 function onGetTableClick(){
