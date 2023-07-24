@@ -1,6 +1,7 @@
 let baseURL="/legrettoserver/";
 let servletURL=baseURL+"hello-servlet/";
 
+let tableData=null;
 
 $("document").ready(function(){
     init();
@@ -31,9 +32,25 @@ function initHandler(){
     });
     $( ".droppable" ).droppable({
         drop: function( event, ui ) {
-            $( this ).html( "" + ui.draggable.attr("data") );
+            let target=$( this );
+            let reqData=parseDropTarget(ui.draggable.attr("data"),target.attr("data"));
+            putCardRequest(reqData);
+
+            // Update TableData
+
+            //target.html( target.attr("data") +"|"+ ui.draggable.attr("data") );
         }
     });
+
+    function parseDropTarget(srcData,targetData){
+        let reqData=
+            {
+                player: parseInt(srcData[1]),
+                slot:parseInt(srcData[3]),
+                target:parseInt(targetData[1])
+            };
+        return reqData;
+    }
 
 
 }
@@ -57,7 +74,28 @@ function getTable(){
     });
 }
 
-function updateTable(tableData){
+function updateTable(tableData_){
+    tableData=tableData_;
+    // set the slots
+    for(playerIdx=0;playerIdx<4;playerIdx++){
+        for(slotIdx=0;slotIdx<4;slotIdx++){
+            cardSlot=$(".CardsTable div[data='P"+playerIdx+"S"+slotIdx+"']");
+            cardSlot.html(tableData.players[playerIdx].slots[slotIdx]);
+        }
+    }
+
+    // set the targets
+    for(x=0;x<16;x++){
+        let target= $(".CardsTable div[data='T"+x+"']");
+        let targetsPointer=tableData.targetsPointer[x];
+        if (targetsPointer>=0) {
+            target.html(tableData.targets[x][targetsPointer]);
+        }
+        else {
+            target.html(-1);
+        }
+    }
+
 
 }
 
@@ -81,14 +119,7 @@ function onPutCardClick(){
             slot:$("#slot").val(),
             target:$("#target").val()
         };
-    let reqDataStr=JSON.stringify(reqData);
-    $.get( servletURL+"putCard", {data: reqDataStr},function( data ) {
-
-    }).done(function(data) {
-        $( "#getTableResult" ).html( JSON.stringify(data,null,3) );
-    }).fail(function(e) {
-        alert( "error in Ajax Request"+e );
-    });
+        putCardRequest(reqData);
 }
 
 function onreInitClick(){
@@ -97,6 +128,20 @@ function onreInitClick(){
     }).done(function(data) {
         //$( "#getTableResult" ).html( JSON.stringify(data,null,3) );
         alert("Table was resetted");
+    }).fail(function(e) {
+        alert( "error in Ajax Request"+e );
+    });
+}
+
+
+function putCardRequest(reqData){
+    let reqDataStr=JSON.stringify(reqData);
+    $.get( servletURL+"putCard", {data: reqDataStr},function( data ) {
+
+    }).done(function(data) {
+        tableData=data;
+        updateTable(data);
+        $( "#getTableResult" ).html( JSON.stringify(data,null,3) );
     }).fail(function(e) {
         alert( "error in Ajax Request"+e );
     });
