@@ -24,11 +24,14 @@ function initHandler(){
     }
 
     $(".draggable").draggable({
-        start: onStartDrag
+        start: onStartDrag,
+        stop: function(event, ui){
+            $(this).animate({ top: 0, left: 0 }, 'slow');
+        }
     });
     $( ".droppable" ).droppable({
         drop: function( event, ui ) {
-            $( this ).html( "Dropped!" + ui.draggable.attr("data") );
+            $( this ).html( "" + ui.draggable.attr("data") );
         }
     });
 
