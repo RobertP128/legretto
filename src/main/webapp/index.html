@@ -3,7 +3,9 @@
 <head>
   <title>JSP - Hello World</title>
   <script src="js/jquery-3.7.0.min.js"></script>
+  <script src="js/jquery-ui-1.13.2/jquery-ui.min.js"></script>
   <script src="js/main.js"></script>
+  <link rel="stylesheet" href="js/jquery-ui-1.13.2/jquery-ui.min.css">
   <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="styles/table.css">
 </head>
@@ -53,12 +55,12 @@
       <script>
         //Lila Karten
       </script>
-      <div class="item Card1L">1</div>
-      <div class="item Card2L">2</div>
-      <div class="item Card3L">3</div>
-      <div class="item Card4L">4</div>
-      <div class="item CardSL">S</div>
-      <div class="item CardHL">H</div>
+      <div class="item Card1L draggable" data="P0S1">1</div>
+      <div class="item Card2L draggable">2</div>
+      <div class="item Card3L draggable">3</div>
+      <div class="item Card4L draggable">4</div>
+      <div class="item CardSL draggable">S</div>
+      <div class="item CardHL draggable">H</div>
     </div>
   </div>
 
@@ -79,7 +81,12 @@
       </div>
 
     </div>
-    <div class="col-8">&nbsp;</div>
+    <div class="col-8 targetArea">
+      <div class="Card droppable col-2">T1</div>
+      <div class="Card droppable col-2">T2</div>
+      <div class="Card droppable col-2">T3</div>
+      <div class="Card droppable col-2">T4</div>
+    </div>
     <div class="col-2">
       <div class="flex-container2">
         <script>

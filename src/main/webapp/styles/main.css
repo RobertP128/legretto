@@ -13,3 +13,8 @@
     color: white;
     width: 100%;
 }
+
+.targetArea{
+    background-color: lightgreen;
+    height: 500px;
+}

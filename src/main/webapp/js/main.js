@@ -19,6 +19,19 @@ function initHandler(){
     $("#closeDebugBox").on("click",onCloseDebugBoxClick);
 
 
+    function onStartDrag(event, ui){
+        //
+    }
+
+    $(".draggable").draggable({
+        start: onStartDrag
+    });
+    $( ".droppable" ).droppable({
+        drop: function( event, ui ) {
+            $( this ).html( "Dropped!" + ui.draggable.attr("data") );
+        }
+    });
+
 
 }
 
@@ -35,10 +48,17 @@ function getTable(){
 
     }).done(function(data) {
         $( "#getTableResult" ).html( JSON.stringify(data,null,3) );
+        updateTable(data);
     }).fail(function(e) {
         alert( "error in Ajax Request"+e );
     });
 }
+
+function updateTable(tableData){
+
+}
+
+
 
 function onPrintAllCardsClick(){
     for(let x=0;x<40;x++){
