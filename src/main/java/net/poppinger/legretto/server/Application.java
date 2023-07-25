@@ -74,48 +74,81 @@ public class Application {
         return (card / 10);
     }
 
-    public boolean ValidatePutCardCommand(PutCardCommand cmd){
-        if (cmd.player<0 || cmd.player>=table.players.length) return false;
-        if (cmd.slot<0 || cmd.slot>3) return false;
-        if (cmd.target<0 || cmd.target>15) return false;
+    public String ValidatePutCardCommand(PutCardCommand cmd){
+        if (cmd.slot==null && !cmd.stackDeck.equals("S") && !cmd.stackDeck.equals("D")) return "Unknown source slot";
+        if (cmd.player<0 || cmd.player>=table.players.length) return "No such player";
+        if (cmd.target<0 || cmd.target>15) return "Illegal target";
 
         var player=table.players[cmd.player];
         // No Card in this slot
-        if (player.slots[cmd.slot]<0) return false;
 
-        int srcCard=player.slots[cmd.slot];
+        int srcCard =-2;
+        // Slot card is taken
+        if (cmd.slot!=null) {
+            if (cmd.slot < 0 || cmd.slot > 3) return "Illegal slot";
+            if (player.slots[cmd.slot] < 0) return "No card in this slot";
+
+            srcCard = player.slots[cmd.slot];
+
+        }
+        else {
+            // Deck or Stack Card is taken
+            if (cmd.stackDeck.equals("S")){
+                // Stack card
+                srcCard = player.getCardFromStackslot();
+                if (srcCard==-1) return "No Cards in the stack left";
+            }
+            if (cmd.stackDeck.equals("D")){
+                // Stack card
+                srcCard = player.getCardFromDeckSlot();
+                if (srcCard==-1) return "No Cards in the deck left";
+            }
+        }
 
         // check if the target is valid for this card
         if (table.targetsPointer[cmd.target]>=0){
             int currentTargetCard=table.targets[cmd.target][table.targetsPointer[cmd.target]];
             // Existing card must be one lower than the srcCard which wants to be put on top here
-            if (getCardColorFromCardInt(currentTargetCard)!=getCardColorFromCardInt(srcCard)) return false;
-            if (getCardValueFromCardInt(currentTargetCard) + 1 == getCardValueFromCardInt(srcCard)) return true;
+            if (getCardColorFromCardInt(currentTargetCard)!=getCardColorFromCardInt(srcCard)) return "Wrong color";
+            if (getCardValueFromCardInt(currentTargetCard) + 1 != getCardValueFromCardInt(srcCard)) return "Incorrect number";
         }
         else {
             // First card in deck
-            if (getCardValueFromCardInt(srcCard)==1) return true;
+            if (getCardValueFromCardInt(srcCard)!=1) return "First card in the target must be 1";
         }
 
-        return false;
+        // Success up to here
+        return null;
 
     }
 
-    public boolean putCard(PutCardCommand cmd){
-        if (ValidatePutCardCommand(cmd)){
+    public String putCard(PutCardCommand cmd){
+        var validationResult=ValidatePutCardCommand(cmd);
+        if (validationResult==null){
             var player=table.players[cmd.player];
-            int srcCard=player.slots[cmd.slot];
-            player.slots[cmd.slot]=-1;
-
+            int srcCard=-2;
+            if (cmd.slot!=null) {
+                // Slotcard was taken
+                srcCard = player.slots[cmd.slot];
+                player.slots[cmd.slot] = -1;
+            }
+            else if (cmd.stackDeck.equals("S")){
+                //Stackcard was taken
+                srcCard = player.popCardFromStackslot();
+            }
+            else {
+                // Deckcard was taken
+                srcCard = player.popCardFromDeckSlot();
+            }
             if (table.targetsPointer[cmd.target]<0){
                 table.targetsPointer[cmd.target]=-1;
             }
             table.targetsPointer[cmd.target]++;
                 // First card in deck
             table.targets[cmd.target][table.targetsPointer[cmd.target]]=srcCard;
-            return true;
+            return null;
         }
-        return false;
+        return validationResult;
     }
 
 }

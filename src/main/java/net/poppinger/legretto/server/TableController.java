@@ -45,12 +45,12 @@ public class TableController extends HttpServlet {
             var success=application.putCard(cmd);
             response.setContentType("application/json");
             PrintWriter out = response.getWriter();
-            if (success) {
+            if (success==null) {
                 out.println(apiController.GetTableJSON(application.table));
             }
             else {
                 response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-                //out.println("Wrong Color");
+                out.println(success);
             }
             return;
         }

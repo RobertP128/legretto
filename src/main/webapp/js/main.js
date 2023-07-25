@@ -8,8 +8,7 @@ $("document").ready(function(){
 });
 
 function init(){
-    //alert("Im here");
-    initHandler()
+    initHandler();
 }
 
 function initHandler(){
@@ -47,6 +46,7 @@ function initHandler(){
             {
                 player: parseInt(srcData[1]),
                 slot:parseInt(srcData[3]),
+                stackDeck:srcData[3],
                 target:parseInt(targetData[1])
             };
         return reqData;
@@ -198,6 +198,6 @@ function putCardRequest(reqData){
         updateTable(data);
         $( "#getTableResult" ).html( JSON.stringify(data,null,3) );
     }).fail(function(e) {
-        alert( "error in Ajax Request"+e );
+        alert( "This move is not allowed:"+e.responseText );
     });
 }
