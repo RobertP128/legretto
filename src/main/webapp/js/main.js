@@ -150,7 +150,7 @@ function getCardColorClass(cardNumber){
 }
 
 function getCardValue(cardNumber){
-    if (cardNumber==-1) return -1
+    if (cardNumber==-1) return "";
     return (cardNumber % 10) +1;
 }
 
