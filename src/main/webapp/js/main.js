@@ -9,6 +9,7 @@ $("document").ready(function(){
 
 function init(){
     initHandler();
+    getTable();
 }
 
 function initHandler(){

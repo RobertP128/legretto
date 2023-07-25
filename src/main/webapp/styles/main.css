@@ -17,5 +17,13 @@
 }
 
 .targetArea{
+    display: flex;
+    justify-content: center;
+}
 
+.targetAreaInnerBox{
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
