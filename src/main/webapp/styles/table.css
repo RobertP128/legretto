@@ -347,3 +347,17 @@ html {
     align-content: center;
     align-items: stretch;
 }
+
+
+.cardColorGN{
+    background-color: green;
+}
+.cardColorRT{
+    background-color: red;
+}
+.cardColorBL{
+    background-color: blue;
+}
+.cardColorYE{
+    background-color: yellow;
+}

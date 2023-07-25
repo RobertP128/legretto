@@ -50,6 +50,7 @@ public class TableController extends HttpServlet {
             }
             else {
                 response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                //out.println("Wrong Color");
             }
             return;
         }

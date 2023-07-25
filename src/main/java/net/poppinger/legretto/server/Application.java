@@ -89,7 +89,8 @@ public class Application {
         if (table.targetsPointer[cmd.target]>=0){
             int currentTargetCard=table.targets[cmd.target][table.targetsPointer[cmd.target]];
             // Existing card must be one lower than the srcCard which wants to be put on top here
-            if (getCardValueFromCardInt(currentTargetCard)+1==getCardValueFromCardInt(srcCard)) return true;
+            if (getCardColorFromCardInt(currentTargetCard)!=getCardColorFromCardInt(srcCard)) return false;
+            if (getCardValueFromCardInt(currentTargetCard) + 1 == getCardValueFromCardInt(srcCard)) return true;
         }
         else {
             // First card in deck

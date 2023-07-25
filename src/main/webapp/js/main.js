@@ -82,6 +82,12 @@ function updateTable(tableData_){
             cardSlot=$(".CardsTable div[data='P"+playerIdx+"S"+slotIdx+"']");
             cardSlot.html(tableData.players[playerIdx].slots[slotIdx]);
         }
+        cardSlot=$(".CardsTable div[data='P"+playerIdx+"SS']");
+        cardSlot.html(tableData.players[playerIdx].cardFromStackslot);
+
+        cardSlot=$(".CardsTable div[data='P"+playerIdx+"SD']");
+        cardSlot.html(tableData.players[playerIdx].cardFromDeckSlot);
+
     }
 
     // set the targets
@@ -97,14 +103,31 @@ function updateTable(tableData_){
     }
 
 
+
+
 }
 
 
+function getCardColorClass(cardNumber){
+    let colorInt=Math.floor(cardNumber / 10);
+    switch (colorInt){
+        case 0:
+            return "cardColorGN";
+        case 1:
+            return "cardColorRT";
+        case 2:
+            return "cardColorBL";
+        case 3:
+            return "cardColorYE";
+    }
 
+
+}
 function onPrintAllCardsClick(){
     for(let x=0;x<40;x++){
         let cardTemplate=$("#templates .card").clone();
         cardTemplate.html(x);
+        cardTemplate.toggleClass(getCardColorClass(x));
         $("#allCardsBox").append(cardTemplate);
     }
 }
@@ -127,6 +150,7 @@ function onreInitClick(){
 
     }).done(function(data) {
         //$( "#getTableResult" ).html( JSON.stringify(data,null,3) );
+        getTable();
         alert("Table was resetted");
     }).fail(function(e) {
         alert( "error in Ajax Request"+e );
