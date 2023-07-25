@@ -350,18 +350,24 @@ html {
 
 
 .cardColorGN{
-    background-color: green;
+    background-color: lightseagreen;
 }
 .cardColorRT{
-    background-color: red;
+    background-color: lightcoral;
 }
 .cardColorBL{
-    background-color: blue;
+    background-color: lightblue;
 }
 .cardColorYE{
-    background-color: yellow;
+    background-color: lightgoldenrodyellow;
 }
 
 .cardColorBack{
     background-color: grey;
+    opacity: 5%;
+}
+
+.item{
+    border-radius:10px 25%;
+    align-content: center;
 }
