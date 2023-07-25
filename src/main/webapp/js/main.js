@@ -74,19 +74,40 @@ function getTable(){
     });
 }
 
+
+function removeCardColors(cardSlot){
+    cardSlot.removeClass("cardColorBack")
+    cardSlot.removeClass("cardColorGN")
+    cardSlot.removeClass("cardColorRT")
+    cardSlot.removeClass("cardColorBL")
+    cardSlot.removeClass("cardColorYE")
+
+}
+
+function setCardColor(cardSlot,cardNumber){
+    removeCardColors(cardSlot);
+    cardSlot.addClass(getCardColorClass(cardNumber));
+}
+
 function updateTable(tableData_){
     tableData=tableData_;
     // set the slots
     for(playerIdx=0;playerIdx<4;playerIdx++){
         for(slotIdx=0;slotIdx<4;slotIdx++){
             cardSlot=$(".CardsTable div[data='P"+playerIdx+"S"+slotIdx+"']");
-            cardSlot.html(tableData.players[playerIdx].slots[slotIdx]);
+            let cardNumber=tableData.players[playerIdx].slots[slotIdx];
+            cardSlot.html(getCardValue(cardNumber));
+            setCardColor(cardSlot,cardNumber);
         }
         cardSlot=$(".CardsTable div[data='P"+playerIdx+"SS']");
-        cardSlot.html(tableData.players[playerIdx].cardFromStackslot);
+        let cardNumber=tableData.players[playerIdx].cardFromStackslot;
+        cardSlot.html(getCardValue(cardNumber));
+        setCardColor(cardSlot,cardNumber);
 
         cardSlot=$(".CardsTable div[data='P"+playerIdx+"SD']");
-        cardSlot.html(tableData.players[playerIdx].cardFromDeckSlot);
+        cardNumber=tableData.players[playerIdx].cardFromDeckSlot;
+        cardSlot.html(getCardValue(cardNumber));
+        setCardColor(cardSlot,cardNumber);
 
     }
 
@@ -94,12 +115,15 @@ function updateTable(tableData_){
     for(x=0;x<16;x++){
         let target= $(".CardsTable div[data='T"+x+"']");
         let targetsPointer=tableData.targetsPointer[x];
+        let cardNumber=-2;
         if (targetsPointer>=0) {
-            target.html(tableData.targets[x][targetsPointer]);
+            cardNumber=tableData.targets[x][targetsPointer];
         }
         else {
-            target.html(-1);
+            cardNumber=-1;
         }
+        target.html(getCardValue(cardNumber));
+        setCardColor(target,cardNumber);
     }
 
 
@@ -109,6 +133,9 @@ function updateTable(tableData_){
 
 
 function getCardColorClass(cardNumber){
+
+    if (cardNumber==-1) return "cardColorBack";
+
     let colorInt=Math.floor(cardNumber / 10);
     switch (colorInt){
         case 0:
@@ -120,11 +147,15 @@ function getCardColorClass(cardNumber){
         case 3:
             return "cardColorYE";
     }
-
-
 }
+
+function getCardValue(cardNumber){
+    if (cardNumber==-1) return -1
+    return (cardNumber % 10) +1;
+}
+
 function onPrintAllCardsClick(){
-    for(let x=0;x<40;x++){
+    for(let x=-1;x<40;x++){
         let cardTemplate=$("#templates .card").clone();
         cardTemplate.html(x);
         cardTemplate.toggleClass(getCardColorClass(x));
