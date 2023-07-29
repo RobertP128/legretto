@@ -74,6 +74,10 @@ html {
     font-size: 4em;
 }
 
+#swapDeckP1,#swapDeckP0,#swapDeckP2,#swapDeckP3{
+    width: 100%;
+}
+
 .playerlable{
     width: 100%;
     color: purple;

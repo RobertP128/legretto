@@ -184,4 +184,14 @@ public class Application {
         return validationResult;
     }
 
+
+    public String swapDeck(int player){
+        // Validate Player
+        if (player<0 || player>3) return "Illegal value";
+
+        table.players[player].rotateDeck();
+
+        return null;
+    }
+
 }

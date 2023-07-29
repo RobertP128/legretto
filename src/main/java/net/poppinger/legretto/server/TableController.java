@@ -54,6 +54,22 @@ public class TableController extends HttpServlet {
             }
             return;
         }
+        if (uri.endsWith("swapDeck")){
+            var playerStr=request.getParameter("player");
+            Integer player=Integer.parseInt(playerStr);
+            var success=application.swapDeck(player);
+
+            response.setContentType("application/json");
+            PrintWriter out = response.getWriter();
+            if (success==null) {
+                out.println(apiController.GetTableJSON(application.table));
+            }
+            else {
+                response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                out.println(success);
+            }
+            return;
+        }
 
 
         response.setContentType("text/html");

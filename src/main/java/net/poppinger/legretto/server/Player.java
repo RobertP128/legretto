@@ -80,5 +80,20 @@ returns boolean true....success
         return -1;
     }
 
+    public void rotateDeck(){
+        // Rotate the Deck
+        // take the first one out
+        // move other s 1 place forward
+        // add the first at the end, done!
+
+        if (deckSlotPointer > 0) {
+            int card = deckSlot[0];
+            for(int x=0;x<deckSlotPointer;x++){
+                deckSlot[x]=deckSlot[x+1];
+            }
+            deckSlot[deckSlotPointer]=card;
+        }
+    }
+
 
 }

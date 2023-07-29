@@ -19,6 +19,10 @@ function initHandler(){
     $("#reInit").on("click",onreInitClick);
     $("#closeDebugBox").on("click",onCloseDebugBoxClick);
 
+    $("#swapDeckP0").on("click",onDeckCardClick);
+    $("#swapDeckP1").on("click",onDeckCardClick);
+    $("#swapDeckP2").on("click",onDeckCardClick);
+    $("#swapDeckP3").on("click",onDeckCardClick);
 
     function onStartDrag(event, ui){
         //
@@ -204,6 +208,20 @@ function onreInitClick(){
     }).fail(function(e) {
         alert( "error in Ajax Request"+e );
     });
+}
+
+function onDeckCardClick(item){
+    let player=$(item.currentTarget).attr("data")[1];
+    $.get( servletURL+"swapDeck", {player: player},function( data ) {
+
+    }).done(function(data) {
+        tableData=data;
+        updateTable(data);
+        $( "#getTableResult" ).html( JSON.stringify(data,null,3) );
+    }).fail(function(e) {
+        alert( "Cannot Swap cards:"+e.responseText );
+    });
+
 }
 
 
