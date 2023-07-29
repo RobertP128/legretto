@@ -63,8 +63,8 @@ html {
 .item{
     border-radius:10px 25%;
     border: 2px solid #f5ef84;
-    width: 100px;
-    height: 200px;
+    width: 4vw;
+    height: 15vh;
     margin: 10px;
     text-align: center;
     line-height: 75px;
