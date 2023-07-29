@@ -67,7 +67,7 @@ function initHandler(){
                 slot:parseInt(srcData[3]),
                 stackDeck:srcData[3],
                 targetType:targetData[0],
-                target:targetData[1],
+                target:isNaN(targetData.substring(1,3)) ? targetData[1] : targetData.substring(1,3),
                 targetPlayer:targetData[1],
                 targetSlot:targetData[3]
             };
