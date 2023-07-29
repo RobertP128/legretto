@@ -42,7 +42,7 @@ public class TableController extends HttpServlet {
             ObjectMapper om=new ObjectMapper();
             var cmd= om.readValue(command,PutCardCommand.class);
 
-            var success=application.putCard(cmd);
+            var success=application.putCard(cmd,application.table);
             response.setContentType("application/json");
             PrintWriter out = response.getWriter();
             if (success==null) {

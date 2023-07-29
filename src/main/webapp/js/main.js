@@ -42,13 +42,30 @@ function initHandler(){
         }
     });
 
+    $( ".item" ).droppable({
+        drop: function( event, ui ) {
+            let target=$( this );
+            let reqData=parseDropTarget(ui.draggable.attr("data"),target.attr("data"));
+            putCardRequest(reqData);
+
+            // Update TableData
+
+            //target.html( target.attr("data") +"|"+ ui.draggable.attr("data") );
+        }
+    });
+
+
     function parseDropTarget(srcData,targetData){
+
         let reqData=
             {
                 player: parseInt(srcData[1]),
                 slot:parseInt(srcData[3]),
                 stackDeck:srcData[3],
-                target:parseInt(targetData[1])
+                targetType:targetData[0],
+                target:targetData[1],
+                targetPlayer:targetData[1],
+                targetSlot:targetData[3]
             };
         return reqData;
     }
