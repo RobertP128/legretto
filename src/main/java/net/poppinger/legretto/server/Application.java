@@ -37,12 +37,14 @@ public class Application {
                 if (slotCard>=0) allCards.add(slotCard);
             }
             // get stack
-            for (var stackCard : player.getAllStackCards()){
+            for (int x=0;x<=player.getStackSlotPointer();x++){
+                var stackCard=player.getAllStackCards()[x];
                 if (stackCard>=0) allCards.add(stackCard);
             }
             // get deck
-            for (var deckCard : player.getAllDeckCards()){
-                if (deckCard>=0) allCards.add(deckCard);
+            for (int x=0;x<=player.getDeckSlotPointer();x++){
+                var stackCard=player.getAllDeckCards()[x];
+                if (stackCard>=0) allCards.add(stackCard);
             }
         }
 
@@ -232,6 +234,7 @@ public class Application {
         if (player<0 || player>3) return "Illegal value";
 
         table.players[player].rotateDeck();
+
 
         return null;
     }

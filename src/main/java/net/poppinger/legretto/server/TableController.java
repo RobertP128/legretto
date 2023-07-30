@@ -77,6 +77,9 @@ public class TableController extends HttpServlet {
 
             response.setContentType("application/json");
             PrintWriter out = response.getWriter();
+            if (!application.saintyCheck()){
+                success="SanityCheck Failed!!!";
+            }
             if (success==null) {
                 out.println(apiController.GetTableJSON(application.table));
             }

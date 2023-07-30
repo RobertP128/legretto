@@ -44,6 +44,7 @@ public class Player {
     public int popCardFromStackslot() {
         if (stackSlotPointer > 0) {
             int card = stackSlot[stackSlotPointer];
+            stackSlot[stackSlotPointer]=-1;
             stackSlotPointer--;
             return card;
         }
@@ -52,6 +53,9 @@ public class Player {
 
     public int[] getAllStackCards(){
         return stackSlot;
+    }
+    public int getStackSlotPointer(){
+        return stackSlotPointer;
     }
 
     public int getCardFromStackslot() {
@@ -78,7 +82,20 @@ returns boolean true....success
     public int popCardFromDeckSlot() {
         if (deckSlotPointer > 0) {
             int card = deckSlot[deckSlotPointer];
+            deckSlot[deckSlotPointer]=-1;
             deckSlotPointer--;
+
+            /*
+            // optimize Deck
+            for (int x=0;x<deckSlot.length-1;x++){
+                if (deckSlot[x]<0){
+                    // copy all higher elements to index one lower
+                    for(int y=x;y<deckSlot.length-1;y++){
+                        deckSlot[y]=deckSlot[y+1];
+                    }
+                }
+            }
+*/
             return card;
         }
         return -1;
@@ -94,6 +111,9 @@ returns boolean true....success
 
     public int[] getAllDeckCards(){
         return deckSlot;
+    }
+    public int getDeckSlotPointer(){
+        return deckSlotPointer;
     }
 
 
