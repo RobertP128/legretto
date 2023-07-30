@@ -36,6 +36,18 @@ public class TableController extends HttpServlet {
             out.println("\"OK\"");
             return;
         }
+        if (uri.endsWith("sanityCheck")){
+            response.setContentType("application/json");
+            PrintWriter out = response.getWriter();
+            if (application.saintyCheck()){
+                out.println("\"OK\"");
+            }
+            else {
+                response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                out.println("\"SanityProblem detected\"");
+            }
+            return;
+        }
         if (uri.endsWith("putCard")){
             var command=request.getParameter("data");
 
@@ -45,6 +57,10 @@ public class TableController extends HttpServlet {
             var success=application.putCard(cmd,application.table);
             response.setContentType("application/json");
             PrintWriter out = response.getWriter();
+            var sanityOK=application.saintyCheck();
+            if (!sanityOK){
+                success="Sanity check failed!!!";
+            }
             if (success==null) {
                 out.println(apiController.GetTableJSON(application.table));
             }

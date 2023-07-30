@@ -18,6 +18,8 @@ function initHandler(){
     $("#putCard").on("click",onPutCardClick);
     $("#reInit").on("click",onreInitClick);
     $("#closeDebugBox").on("click",onCloseDebugBoxClick);
+    $("#sanityCheck").on("click",onSanityCheckClick);
+
 
     $("#swapDeckP0").on("click",onDeckCardClick);
     $("#swapDeckP1").on("click",onDeckCardClick);
@@ -209,6 +211,18 @@ function onreInitClick(){
         alert( "error in Ajax Request"+e );
     });
 }
+
+function onSanityCheckClick(){
+    $.get( servletURL+"sanityCheck",function( data ) {
+
+    }).done(function(data) {
+        alert("Sanity OK");
+    }).fail(function(e) {
+        alert( "Sanity Problem!!!!"+e );
+    });
+
+}
+
 
 function onDeckCardClick(item){
     let player=$(item.currentTarget).attr("data")[1];

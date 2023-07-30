@@ -1,6 +1,7 @@
 package net.poppinger.legretto.server;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Application {
@@ -20,11 +21,52 @@ public class Application {
             }
         }
 
-        table.players[0].slots[0]=0;
-        table.players[0].slots[1]=1;
-        table.players[1].slots[2]=2;
-        table.players[2].slots[3]=3;
+        //table.players[0].slots[0]=0;
+        //table.players[0].slots[1]=1;
+        //table.players[1].slots[2]=2;
+        //table.players[2].slots[3]=3;
 
+    }
+
+    public boolean saintyCheck(){
+        List<Integer> allCards=new ArrayList<>();
+        // get for all players
+        for (var player: table.players) {
+            // get slots
+            for (var slotCard: player.slots) {
+                if (slotCard>=0) allCards.add(slotCard);
+            }
+            // get stack
+            for (var stackCard : player.getAllStackCards()){
+                if (stackCard>=0) allCards.add(stackCard);
+            }
+            // get deck
+            for (var deckCard : player.getAllDeckCards()){
+                if (deckCard>=0) allCards.add(deckCard);
+            }
+        }
+
+        // get all targetcards
+        for (var target: table.targets) {
+            for (var card: target) {
+                if (card>=0) allCards.add(card);
+            }
+        }
+
+        // Sort the array
+        Collections.sort(allCards);
+
+        if (allCards.size()!=160) return false;
+        // check if we have consecutive numbers (4 times each)
+        for(int x=0;x<allCards.size();x+=4){
+            int cardValue=x/4;
+            if (allCards.get(x)!=cardValue || allCards.get(x+1)!=cardValue || allCards.get(x+2)!=cardValue || allCards.get(x+3)!=cardValue){
+                return false;
+            }
+        }
+
+
+        return true;
     }
 
     private void fillSinglePlayer(int playerNum){

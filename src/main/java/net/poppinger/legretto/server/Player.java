@@ -1,5 +1,7 @@
 package net.poppinger.legretto.server;
 
+import java.util.List;
+
 public class Player {
     public int slots[];
 
@@ -16,7 +18,13 @@ public class Player {
     public void resetSlots() {
         slots = new int[4];
         stackSlot = new int[10];
+        for(int x=0;x<stackSlot.length;x++){
+            stackSlot[x]=-1;
+        }
         deckSlot = new int[40];
+        for(int x=0;x<deckSlot.length;x++){
+            deckSlot[x]=-1;
+        }
         stackSlotPointer = -1;
         deckSlotPointer = -1;
     }
@@ -40,6 +48,10 @@ public class Player {
             return card;
         }
         return -1;
+    }
+
+    public int[] getAllStackCards(){
+        return stackSlot;
     }
 
     public int getCardFromStackslot() {
@@ -79,6 +91,11 @@ returns boolean true....success
         }
         return -1;
     }
+
+    public int[] getAllDeckCards(){
+        return deckSlot;
+    }
+
 
     public void rotateDeck(){
         // Rotate the Deck
