@@ -26,6 +26,7 @@ public class Application {
         //table.players[1].slots[2]=2;
         //table.players[2].slots[3]=3;
 
+
     }
 
     public boolean saintyCheck(){

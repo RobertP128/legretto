@@ -42,7 +42,7 @@ public class Player {
     }
 
     public int popCardFromStackslot() {
-        if (stackSlotPointer > 0) {
+        if (stackSlotPointer >= 0) {
             int card = stackSlot[stackSlotPointer];
             stackSlot[stackSlotPointer]=-1;
             stackSlotPointer--;
@@ -59,7 +59,7 @@ public class Player {
     }
 
     public int getCardFromStackslot() {
-        if (stackSlotPointer > 0) {
+        if (stackSlotPointer >= 0) {
             int card = stackSlot[stackSlotPointer];
             return card;
         }
@@ -80,7 +80,7 @@ returns boolean true....success
     }
 
     public int popCardFromDeckSlot() {
-        if (deckSlotPointer > 0) {
+        if (deckSlotPointer >= 0) {
             int card = deckSlot[deckSlotPointer];
             deckSlot[deckSlotPointer]=-1;
             deckSlotPointer--;
@@ -102,7 +102,7 @@ returns boolean true....success
     }
 
     public int getCardFromDeckSlot() {
-        if (deckSlotPointer > 0) {
+        if (deckSlotPointer >= 0) {
             int card = deckSlot[deckSlotPointer];
             return card;
         }
