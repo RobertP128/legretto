@@ -80,7 +80,14 @@ function initHandler(){
 }
 
 function onCloseDebugBoxClick(){
-    $("#getTableResult").html("--");
+    if ($("#getTableResult").is(":visible")) {
+        $("#getTableResult").hide();
+        $("#debugBox").height("22px");
+    }
+    else {
+        $("#getTableResult").show();
+        $("#debugBox").height("240");
+    }
 }
 
 function onGetTableClick(){
