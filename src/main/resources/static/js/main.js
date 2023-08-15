@@ -1,5 +1,5 @@
 let baseURL="/legrettoserver/";
-let servletURL=baseURL+"hello-servlet/";
+let servletURL=baseURL+"";
 
 let tableData=null;
 
@@ -19,6 +19,8 @@ function initHandler(){
     $("#reInit").on("click",onreInitClick);
     $("#closeDebugBox").on("click",onCloseDebugBoxClick);
     $("#sanityCheck").on("click",onSanityCheckClick);
+
+
 
 
     $("#swapDeckP0").on("click",onDeckCardClick);
@@ -78,6 +80,8 @@ function initHandler(){
 
 
 }
+
+
 
 function onCloseDebugBoxClick(){
     if ($("#getTableResult").is(":visible")) {

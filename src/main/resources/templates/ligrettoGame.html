@@ -16,6 +16,11 @@
   <button id="reInit">ReInit</button>
   <button id="getTable">Get Table</button>
   <button id="sanityCheck">Sanity check</button>
+
+  <form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+  </form>
+  <span>Logged in as:</span><span th:text="${#authentication.principal.username}"></span>
 </div>
 <!--
 <button id="printAllCards">Print All Cards</button>
