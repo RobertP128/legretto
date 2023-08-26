@@ -144,6 +144,15 @@ function updateTable(tableData_){
         cardSlot.html(getCardValue(cardNumber));
         setCardColor(cardSlot,cardNumber);
 
+        for(let x=0;x<4;x++) {
+            let playerTable = $(".playerlable.P" + x);
+            if (x==tableData.currentPlayerId) {
+                playerTable.addClass("activePlayer");
+            }
+            else {
+                playerTable.addClass("inactivePlayer");
+            }
+        }
     }
 
     // set the targets

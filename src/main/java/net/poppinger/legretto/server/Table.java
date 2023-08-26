@@ -1,6 +1,8 @@
 package net.poppinger.legretto.server;
 
 public class Table {
+
+
     public Player[] players;
     public int[][] targets;
     public int[] targetsPointer;

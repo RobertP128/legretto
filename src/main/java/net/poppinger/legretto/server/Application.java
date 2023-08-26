@@ -8,8 +8,8 @@ public class Application {
 
     public Table table;
 
-    public void init(){
-        table=new Table();
+    public void init(Table existingTable){
+        table=(existingTable!=null) ? existingTable : new Table();
 
         for(int numPlayer=0;numPlayer<4;numPlayer++){
             fillSinglePlayer(numPlayer);
@@ -194,9 +194,12 @@ public class Application {
 
     }
 
-    public String putCard(PutCardCommand cmd,Table table){
+    public String putCard(PutCardCommand cmd,int currentPlayerId,Table table){
         var validationResult=ValidatePutCardCommand(cmd,table);
         if (validationResult==null){
+            if (currentPlayerId!=cmd.player){
+                return "Not allowed. You are player#"+currentPlayerId;
+            }
             var player=table.players[cmd.player];
             int srcCard=-2;
             if (cmd.slot!=null) {

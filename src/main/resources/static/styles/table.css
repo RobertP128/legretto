@@ -95,3 +95,11 @@ html {
     display: flex;
     flex-wrap: wrap;
 }
+
+
+.activePlayer{
+    color: red;
+}
+.inactivePlayer{
+    color: grey;
+}
